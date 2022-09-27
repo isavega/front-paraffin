@@ -7,12 +7,12 @@ export default function Home() {
   const [data, setData] = useState();
 
   useEffect(() => {
-    const getPublications = async () => {
+    const getCurriculums = async () => {
       const response = await fetch("/api/curriculums");
       const getResponse = await response.json();
       setData(getResponse);
     };
-    getPublications();
+    getCurriculums();
   }, []);
 
   return (
