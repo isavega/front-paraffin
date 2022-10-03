@@ -6,7 +6,7 @@ import { postResource } from "../api/api";
 
 import styles from "../styles/Home.module.css";
 import BasicCard from "../components/BasicCard";
-import styles from "../styles/Home.module.css";
+import axios from "axios";
 
 // MUI
 import Button from "@mui/material/Button";
@@ -15,6 +15,7 @@ import Stack from "@mui/material/Stack";
 
 function Home() {
   const router = useRouter();
+  const [data, setData] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
@@ -31,6 +32,7 @@ function Home() {
 
   const submitHandler = async () => {
     const response = await signOut(1); //TODO manage id
+    console.log(response);
     if (response.code === 200) {
       router.push("/login");
       return;
@@ -62,18 +64,24 @@ function Home() {
       </div>
 
       <div>
-        {data?.map((item, i) => (
-          <p className={styles.description} key={item.id}>
-            <BasicCard title={item.name} description={item.description} />
-          </p>
+        {data?.map((item, index) => (
+          <BasicCard
+            key={index}
+            title={item.name}
+            description={item.description}
+          />
         ))}
       </div>
-      <Button onClick={submitHandler} variant="contained">
-        Loh vimoh
-      </Button>
-      <Button onClick={submitPost} variant="contained">
-        Crear un recurso
-      </Button>
+      <div style={{ margin: "10%" }}>
+        <Button onClick={submitHandler} variant="contained">
+          Loh vimoh
+        </Button>
+        <Button onClick={submitPost} variant="contained">
+          Crear un recurso
+        </Button>
+      </div>
     </div>
   );
+}
 
+export default Home;
