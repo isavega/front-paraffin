@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 
 const pages = ["About us", "Roadmaps"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile", "Account", "Logout"];
 
 const ResponsiveAppBar = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -36,7 +36,7 @@ const ResponsiveAppBar = () => {
 	};
 
 	return (
-		<AppBar position="static">
+		<AppBar position="static" style={{ backgroundColor: "#424242" }}>
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
 					{/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
