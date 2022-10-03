@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { signOut } from "../utils/auth";
 import { useRouter } from "next/router";
 import { postResource } from "../api/api";
+
+import styles from "../styles/Home.module.css";
 import BasicCard from "../components/BasicCard";
 import styles from "../styles/Home.module.css";
 
@@ -74,4 +76,4 @@ function Home() {
       </Button>
     </div>
   );
-}
+
