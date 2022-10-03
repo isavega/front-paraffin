@@ -17,7 +17,7 @@ const bull = (
 export default function BasicCard(props) {
 	const { roadmapId, title, urlImage, description } = props;
 	return (
-		<Card sx={{ minWidth: 275 }}>
+		<Card sx={{ minWidth: 275 }} style={{ borderBlockColor: "gray" }}>
 			<CardContent>
 				<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
 					Roadmap
@@ -32,7 +32,9 @@ export default function BasicCard(props) {
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button size="small">Learn More</Button>
+				<Button size="small" style={{ color: "gray" }}>
+					Learn More
+				</Button>
 			</CardActions>
 		</Card>
 	);
