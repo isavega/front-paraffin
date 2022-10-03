@@ -1,19 +1,34 @@
-import React, { useState } from "react";
-import RoadmapCard from "../components/RoadmapCard";
-import Button from "@mui/material/Button";
-import Alert from "@mui/material/Alert";
-import Stack from "@mui/material/Stack";
+import React, { useState, useEffect } from "react";
+
 import { signOut } from "../utils/auth";
 import { useRouter } from "next/router";
 import { postResource } from "../api/api";
+import BasicCard from "../components/BasicCard";
+import styles from "../styles/Home.module.css";
+
+// MUI
+import Button from "@mui/material/Button";
+import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
 
 function Home() {
-  const image = "https://miro.medium.com/max/960/1*PFEk9y9K_k5Ql58pC567-A.png";
   const router = useRouter();
   const [showAlert, setShowAlert] = useState(false);
 
+  useEffect(() => {
+    const getCurriculums = async () => {
+      try {
+        const response = await axios.get("/api/curriculums");
+        setData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getCurriculums();
+  }, []);
+
   const submitHandler = async () => {
-    const response = await signOut(1);
+    const response = await signOut(1); //TODO manage id
     if (response.code === 200) {
       router.push("/login");
       return;
@@ -23,6 +38,7 @@ function Home() {
   };
 
   const submitPost = async () => {
+    //TODO manage real data
     postResource({
       curriculumId: "4",
       learningUnitId: "2",
@@ -34,7 +50,7 @@ function Home() {
 
   return (
     <div>
-      <h1>Hola Cecy</h1>
+      <h1>Hola Usuario</h1>
       <div>
         {showAlert && (
           <Stack sx={{ width: "100%" }} spacing={2}>
@@ -43,11 +59,13 @@ function Home() {
         )}
       </div>
 
-      <RoadmapCard
-        title="Rails"
-        description="best way of learning Rails and React"
-        urlImage={image}
-      />
+      <div>
+        {data?.map((item, i) => (
+          <p className={styles.description} key={item.id}>
+            <BasicCard title={item.name} description={item.description} />
+          </p>
+        ))}
+      </div>
       <Button onClick={submitHandler} variant="contained">
         Loh vimoh
       </Button>
@@ -57,5 +75,3 @@ function Home() {
     </div>
   );
 }
-
-export default Home;
