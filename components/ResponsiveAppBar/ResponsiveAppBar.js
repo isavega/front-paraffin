@@ -36,8 +36,6 @@ const ResponsiveAppBar = () => {
 	};
 
 	const submitHandler = (string) => {
-		console.log("ACAAAAAAAAAAAAAAAAAAA");
-		console.log(string);
 		if (string === "About us") {
 			router.push("/about");
 		} else {

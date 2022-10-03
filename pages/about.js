@@ -1,9 +1,7 @@
-import ResponsiveAppBar from "../components/ResponsiveAppBar";
 import styles from "../styles/Home.module.css";
 export default function About() {
 	return (
 		<div className={styles.container}>
-			<ResponsiveAppBar />
 			<div>
 				{" "}
 				<h1 className={styles.title}>¿Por qué lo hacemos?</h1>

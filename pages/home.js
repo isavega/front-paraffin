@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import BasicCard from "../components/BasicCard";
+import BasicCard from "../components/BasicCard/BasicCard";
 
 export default function Home() {
 	const [data, setData] = useState();
