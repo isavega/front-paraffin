@@ -69,7 +69,6 @@ function Home() {
 }
 
 	const handleRedirect = (currentRoadmap) => {
-		console.log("nfkasndfjksdf: ", currentRoadmap);
 		router.push(
 			{
 				pathname: "/roadmaps",
