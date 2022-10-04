@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import { signOut } from "../utils/auth";
 import { useRouter } from "next/router";
 import { postResource } from "../api/api";
 
-import styles from "../styles/Home.module.css";
-import BasicCard from "../components/BasicCard";
+import BasicCard from "../components/BasicCard/BasicCard";
 import axios from "axios";
 
 // MUI
@@ -29,17 +27,6 @@ function Home() {
     };
     getCurriculums();
   }, []);
-
-  const submitHandler = async () => {
-    const response = await signOut(1); //TODO manage id
-    console.log(response);
-    if (response.code === 200) {
-      router.push("/login");
-      return;
-    }
-    setShowAlert(true);
-    setTimeout(() => setShowAlert(false), 3000);
-  };
 
   const submitPost = async () => {
     //TODO manage real data
@@ -73,9 +60,6 @@ function Home() {
         ))}
       </div>
       <div style={{ margin: "10%" }}>
-        <Button onClick={submitHandler} variant="contained">
-          Loh vimoh
-        </Button>
         <Button onClick={submitPost} variant="contained">
           Crear un recurso
         </Button>
