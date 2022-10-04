@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import BasicCard from "../components/BasicCard/BasicCard";
+import RoadmapCard from "../components/RoadmapCard/RoadmapCard";
 
 function Roadmap() {
 	const router = useRouter();
@@ -23,7 +23,7 @@ function Roadmap() {
 			{data?.map((item, i) => (
 				<p key={item.id}>
 					{item.name}
-					<BasicCard
+					<RoadmapCard
 						title={item.name}
 						description={item.description}
 						type="Checkpoint"

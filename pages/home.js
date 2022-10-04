@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
-import BasicCard from "../components/BasicCard/BasicCard";
+import RoadmapCard from "../components/RoadmapCard/RoadmapCard";
 import axios from "axios";
 
 function Home() {
@@ -47,7 +47,7 @@ function Home() {
 				<div>
 					{data?.map((roadmap, index) => (
 						<p className={styles.description} key={roadmap.id}>
-							<BasicCard
+							<RoadmapCard
 								key={index}
 								title={roadmap.name}
 								description={roadmap.description}
