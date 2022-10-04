@@ -68,6 +68,19 @@ function Home() {
   );
 }
 
+	const handleRedirect = (currentRoadmap) => {
+		console.log("nfkasndfjksdf: ", currentRoadmap);
+		router.push(
+			{
+				pathname: "/roadmaps",
+				query: {
+					...currentRoadmap,
+				},
+			},
+			"/roadmaps"
+		);
+	};
+
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -87,7 +100,12 @@ function Home() {
 				<div>
 					{data?.map((item, i) => (
 						<p className={styles.description} key={item.id}>
-							<BasicCard title={item.name} description={item.description} />
+							<BasicCard
+								title={item.name}
+								description={item.description}
+								type="Roadmap"
+								action={() => handleRedirect(item)}
+							/>
 						</p>
 					))}
 				</div>
