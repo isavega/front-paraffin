@@ -23,3 +23,16 @@ export const postComment = async (data) => {
     console.error(error);
   }
 };
+
+export const postCompletedCheckpoint = async () => {
+	try {
+		const response = await axios.post(
+			`api/curriculums/${data.curriculumId}/learning_units/${data.learningUnitId}/set_completed`,
+			data
+		);
+		console.log("Changed!");
+		console.log(response.data);
+	} catch (error) {
+		console.error(error);
+	}
+};
