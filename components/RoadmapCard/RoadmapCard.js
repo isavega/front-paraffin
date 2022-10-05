@@ -17,10 +17,7 @@ function RoadmapCard(props) {
           {title}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary"></Typography>
-        <Typography variant="body2">
-          {description}
-          <br />
-        </Typography>
+        <Typography variant="body2">{description}</Typography>
       </CardContent>
       <CardActions>
         <Button size="small" style={{ color: "gray" }} onClick={action}>

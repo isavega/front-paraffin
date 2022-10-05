@@ -21,6 +21,9 @@ const ResponsiveAppBar = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const router = useRouter();
 
+  const chulengoAvatar =
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4wUZNkVsvfl0pfnaAEJaa4oeOD7uipWJSG76sv5uN6UdAHADnO-XpW_eYcMczRLwJQZA&usqp=CAU";
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -90,10 +93,7 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  alt="Remy Sharp"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4wUZNkVsvfl0pfnaAEJaa4oeOD7uipWJSG76sv5uN6UdAHADnO-XpW_eYcMczRLwJQZA&usqp=CAU"
-                />
+                <Avatar alt="Remy Sharp" src={chulengoAvatar} />
               </IconButton>
             </Tooltip>
             <Menu
