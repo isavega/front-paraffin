@@ -8,7 +8,10 @@
 // 	});
 // };
 
+import React, { useState, useEffect } from "react";
 import ResourceCard from "../components/ ResourceCard/ ResourceCard";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 const dummyDataComents = [
   { userId: 1, userName: "Isa", comment: "Mejor que Rails" },
@@ -16,14 +19,37 @@ const dummyDataComents = [
 ];
 
 function Resource() {
+  const router = useRouter();
+  const { roadmapId, checkpointId, id: resourceId } = router.query;
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    const getComments = async () => {
+      try {
+        const response = await axios.get(
+          `/api/curriculums/${roadmapId}/learning_units/${checkpointId}/resources/${resourceId}/comments`
+        );
+        setComments(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getComments();
+  }, []);
+
+  console.log(comments);
+
   return (
     <div>
-      <ResourceCard
-        title="Django Master"
-        rating={3.5}
-        dataList={dummyDataComents}
-        style={{ margin: "10%" }}
-      />
+      {comments?.map((comment, index) => (
+        <ResourceCard
+          key={index}
+          title="Django Master"
+          rating={3.5}
+          dataList={comments}
+          style={{ margin: "10%" }}
+        />
+      ))}
     </div>
   );
 }

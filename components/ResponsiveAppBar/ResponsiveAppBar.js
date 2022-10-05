@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
+import { signOut } from "../../utils/auth";
+
+import { chulengoAvatar } from "../../utils/images";
+
+//MUI
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,8 +16,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import { useRouter } from "next/router";
-import { signOut } from "../../utils/auth";
 
 const pages = ["About us", "Roadmap"];
 const settings = ["Logout"];
@@ -20,9 +24,6 @@ const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const router = useRouter();
-
-  const chulengoAvatar =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4wUZNkVsvfl0pfnaAEJaa4oeOD7uipWJSG76sv5uN6UdAHADnO-XpW_eYcMczRLwJQZA&usqp=CAU";
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);

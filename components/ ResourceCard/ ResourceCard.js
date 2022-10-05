@@ -1,4 +1,5 @@
 import React from "react";
+import { chulengoAvatar } from "../../utils/images";
 
 // MUI
 import Rating from "@mui/material/Rating";
@@ -12,12 +13,10 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
+import StarIcon from "@mui/icons-material/Star";
 
 const ResourceCard = (props) => {
   const { title, rating, dataList } = props;
-
-  const chulengoAvatar =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4wUZNkVsvfl0pfnaAEJaa4oeOD7uipWJSG76sv5uN6UdAHADnO-XpW_eYcMczRLwJQZA&usqp=CAU";
 
   return (
     <div
@@ -48,6 +47,9 @@ const ResourceCard = (props) => {
               precision={0.5}
               size="large"
               defaultValue={2.5}
+              emptyIcon={
+                <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+              }
             />
           </div>
           <Accordion
@@ -66,7 +68,7 @@ const ResourceCard = (props) => {
               {dataList?.map((data, index) => (
                 <Stack
                   direction="row"
-                  key={data.userId}
+                  key={data.id}
                   spacing={1}
                   style={{ marginBottom: "5%" }}
                 >
@@ -76,10 +78,10 @@ const ResourceCard = (props) => {
                     style={{ marginRight: "2%" }}
                   />
                   <Typography style={{ color: "#00DCD2", marginTop: "2%" }}>
-                    {data.userName}:
+                    {data.user_name}:
                   </Typography>
                   <Typography style={{ color: "white", marginTop: "2%" }}>
-                    {data.comment}
+                    {data.content}
                   </Typography>
                 </Stack>
               ))}
