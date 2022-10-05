@@ -24,7 +24,7 @@ export const postComment = async (data) => {
   }
 };
 
-export const postCompletedCheckpoint = async () => {
+export const postCompletedCheckpoint = async (data) => {
 	try {
 		const response = await axios.post(
 			`api/curriculums/${data.curriculumId}/learning_units/${data.learningUnitId}/set_completed`,
