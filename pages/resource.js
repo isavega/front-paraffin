@@ -11,6 +11,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import ResourceCard from "../components/ ResourceCard/ ResourceCard";
+<<<<<<< HEAD
 import { useRouter } from "next/router";
 import { postComment } from "../api/api";
 import useCurrentUser from "../hooks/useCurrentUser";
