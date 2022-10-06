@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { chulengoAvatar } from "../../utils/images";
 
 // MUI
@@ -15,14 +15,28 @@ import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import StarIcon from "@mui/icons-material/Star";
 
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import Fade from "@mui/material/Fade";
+import TextField from "@mui/material/TextField";
+
 const ResourceCard = (props) => {
-  const { title, rating, dataList } = props;
+  const { title, rating, dataList, newComment } = props;
+  const [openModal, setOpenModal] = useState(false);
+  const [commentValue, setCommentValue] = useState("");
+
+  const commentHandler = () => {
+    newComment(commentValue);
+    setCommentValue("");
+    setOpenModal(false);
+  };
 
   return (
     <div
       style={{
         margin: "10%",
         width: "500px",
+        marginBottom: "30px",
       }}
     >
       <Card
@@ -68,7 +82,7 @@ const ResourceCard = (props) => {
               {dataList?.map((data, index) => (
                 <Stack
                   direction="row"
-                  key={data.id}
+                  key={index}
                   spacing={1}
                   style={{ marginBottom: "5%" }}
                 >
@@ -95,17 +109,64 @@ const ResourceCard = (props) => {
             }}
           >
             <Button
+              onClick={() => setOpenModal(true)}
               style={{
                 color: "#424242",
               }}
             >
               Crear comentario
             </Button>
+            {openModal && (
+              <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                open={openModal}
+                onClose={() => setOpenModal(false)}
+                closeAfterTransition
+              >
+                <Fade in={openModal}>
+                  <Box sx={style}>
+                    <Typography
+                      id="transition-modal-title"
+                      variant="h6"
+                      component="h2"
+                    >
+                      Nuevo comentario
+                    </Typography>
+                    <Typography
+                      id="transition-modal-description"
+                      sx={{ mt: 2 }}
+                    >
+                      Deja tu comentario, ayudarás a muchos como tu 😇
+                    </Typography>
+                    <TextField
+                      id="outlined-multiline-static"
+                      multiline
+                      value={commentValue}
+                      onChange={(input) => setCommentValue(input.target.value)}
+                    />
+                    <Button onClick={commentHandler}>Crear comentario</Button>
+                  </Box>
+                </Fade>
+              </Modal>
+            )}
           </div>
         </CardContent>
       </Card>
     </div>
   );
+};
+
+const style = {
+  color: "black",
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 500,
+  bgcolor: "background.paper",
+  border: "5px",
+  padding: 4,
 };
 
 export default ResourceCard;
