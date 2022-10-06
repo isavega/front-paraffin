@@ -8,21 +8,52 @@
 // 	});
 // };
 
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import ResourceCard from "../components/ ResourceCard/ ResourceCard";
-
-const dummyDataComents = [
-  { userId: 1, userName: "Isa", comment: "Mejor que Rails" },
-  { userId: 2, userName: "Vane", comment: "Un poco imbeeeecil el profe" },
-];
+import { useRouter } from "next/router";
+import { postComment } from "../api/api";
 
 function Resource() {
+  const router = useRouter();
+  const { roadmapId, checkpointId, id: resourceId } = router.query;
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    const getComments = async () => {
+      try {
+        const response = await axios.get(
+          `/api/curriculums/${roadmapId}/learning_units/${checkpointId}/resources/${resourceId}/comments`
+        );
+        setComments(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getComments();
+  });
+
+  const submitHandler = async (input, comment) => {
+    const createNewComment = postComment({
+      roadmapId: roadmapId,
+      checkpointId: checkpointId,
+      resourceId: resourceId,
+      content: input,
+      user_id: "1", //TODO falta el user.id en el comment, ahora muestra el nombre del usuario y no el id
+      resource_id: resourceId,
+    });
+    //comments.push(createNewComment);
+    setComments([...comments, createNewComment]);
+  };
+
   return (
     <div>
       <ResourceCard
         title="Django Master"
         rating={3.5}
-        dataList={dummyDataComents}
+        dataList={comments}
         style={{ margin: "10%" }}
+        newComment={(input) => submitHandler(input)}
       />
     </div>
   );
