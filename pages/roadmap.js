@@ -11,18 +11,6 @@ function Roadmap() {
 		description: roadmapDescription,
 	} = router.query;
 	const [data, setData] = useState();
-	const dataHandler = (currentCheckpoint) => {
-		router.push(
-			{
-				pathname: "/checkpoint",
-				query: {
-					...currentCheckpoint,
-					roadmapId: id,
-				},
-			},
-			"/checkpoint"
-		);
-	};
 
 	useEffect(() => {
 		const getCheckpoints = async () => {
