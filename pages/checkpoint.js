@@ -6,17 +6,11 @@ import axios from "axios";
 // MUI
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-<<<<<<< HEAD
-=======
-import postCompletedCheckpoint from "../api/api";
-import { SafetyCheckRounded } from "@mui/icons-material";
->>>>>>> b296463 (fix: checkbox action in learning unit)
 
 function Checkpoint() {
 	const router = useRouter();
 	const [data, setData] = useState();
 	const [checked, setChecked] = useState(false);
-<<<<<<< HEAD
 	const {
 		roadmapId,
 		id: checkpointId,
@@ -24,9 +18,6 @@ function Checkpoint() {
 		description: checkpointDescription,
 	} = router.query;
 
-=======
-	const { roadmapId, id, name, description } = router.query;
->>>>>>> b296463 (fix: checkbox action in learning unit)
 	useEffect(() => {
 		const getResources = async () => {
 			try {
