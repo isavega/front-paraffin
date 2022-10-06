@@ -2,15 +2,27 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import RoadmapCard from "../components/RoadmapCard/RoadmapCard";
 import axios from "axios";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
-// MUI
-import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
+// export default function ContainedButtons() {
+//   return (
+//     <Stack direction="row" spacing={2}>
+//       <Button variant="contained">Contained</Button>
+//       <Button variant="contained" disabled>
+//         Disabled
+//       </Button>
+//       <Button variant="contained" href="#contained-buttons">
+//         Link
+//       </Button>
+//     </Stack>
+//   );
+// }
 
 function Checkpoint() {
 	const router = useRouter();
 	const [data, setData] = useState();
-	const [checked, setChecked] = useState(false);
+	const [completed, setCompleted] = useState("Completar");
 	const {
 		roadmapId,
 		id: checkpointId,
@@ -32,11 +44,13 @@ function Checkpoint() {
 		getResources();
 	}, []);
 
-	const checkHandler = (completedData) => {
-		setChecked(!checked);
-		if (checked) {
-			console.log(checked);
+	const checkHandler = () => {
+		if (completed === "Completar") {
+			setCompleted("Completado!");
+			console.log(completed);
 			//postCompletedCheckpoint(completedData);
+		} else {
+			setCompleted("Completar");
 		}
 	};
 
@@ -58,19 +72,14 @@ function Checkpoint() {
 		<div>
 			<h1>{checkpointName}</h1>
 			<p>{checkpointDescription}</p>
-			<FormControlLabel
-				value="start"
-				control={
-					<Checkbox
-						onChange={() => {
-							checkHandler(checked);
-							console.log(checked);
-						}}
-					/>
-				}
-				label="Completed"
-				labelPlacement="start"
-			/>
+			<Button
+				variant="contained"
+				onClick={() => {
+					checkHandler();
+				}}>
+				{" "}
+				{completed}
+			</Button>
 			<div>
 				{data?.map((resource, index) => (
 					<RoadmapCard
