@@ -3,21 +3,7 @@ import { useRouter } from "next/router";
 import RoadmapCard from "../components/RoadmapCard/RoadmapCard";
 import axios from "axios";
 import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-
-// export default function ContainedButtons() {
-//   return (
-//     <Stack direction="row" spacing={2}>
-//       <Button variant="contained">Contained</Button>
-//       <Button variant="contained" disabled>
-//         Disabled
-//       </Button>
-//       <Button variant="contained" href="#contained-buttons">
-//         Link
-//       </Button>
-//     </Stack>
-//   );
-// }
+import { postCompletedCheckpoint } from "../api/api";
 
 function Checkpoint() {
 	const router = useRouter();
@@ -48,7 +34,12 @@ function Checkpoint() {
 		if (completed === "Completar") {
 			setCompleted("Completado!");
 			console.log(completed);
-			//postCompletedCheckpoint(completedData);
+			postCompletedCheckpoint({
+				learning_unit_id: checkpointId,
+				learningUnitId: checkpointId,
+				curriculumId: roadmapId,
+				user_id: 1,
+			});
 		} else {
 			setCompleted("Completar");
 		}
@@ -72,12 +63,7 @@ function Checkpoint() {
 		<div>
 			<h1>{checkpointName}</h1>
 			<p>{checkpointDescription}</p>
-			<Button
-				variant="contained"
-				onClick={() => {
-					checkHandler();
-				}}>
-				{" "}
+			<Button variant="contained" onClick={checkHandler}>
 				{completed}
 			</Button>
 			<div>
