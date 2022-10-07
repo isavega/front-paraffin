@@ -55,7 +55,6 @@ function Home() {
             key={index}
             title={roadmap.name}
             description={roadmap.description}
-            type="Roadmap"
             action={() => dataHandler(roadmap)}
           />
         ))}

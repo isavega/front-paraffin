@@ -8,16 +8,18 @@
 // 	});
 // };
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import ResourceCard from "../components/ ResourceCard/ ResourceCard";
 import { useRouter } from "next/router";
 import { postComment } from "../api/api";
+import useCurrentUser from "../hooks/useCurrentUser";
 
 function Resource() {
   const router = useRouter();
   const { roadmapId, checkpointId, id: resourceId } = router.query;
   const [comments, setComments] = useState([]);
+  const { id: userId, name: userName, email: userEmail } = useCurrentUser();
 
   useEffect(() => {
     const getComments = async () => {
@@ -31,7 +33,7 @@ function Resource() {
       }
     };
     getComments();
-  });
+  }, []); // TODO ver como hacer el render controladamente
 
   const submitHandler = async (input, comment) => {
     const createNewComment = postComment({
@@ -39,7 +41,7 @@ function Resource() {
       checkpointId: checkpointId,
       resourceId: resourceId,
       content: input,
-      user_id: "1", //TODO falta el user.id en el comment, ahora muestra el nombre del usuario y no el id
+      user_id: userId,
       resource_id: resourceId,
     });
     //comments.push(createNewComment);

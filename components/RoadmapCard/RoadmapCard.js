@@ -6,13 +6,10 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 function RoadmapCard(props) {
-  const { title, description, type, action } = props;
+  const { title, description, action } = props;
   return (
     <Card sx={{ minWidth: 275 }} style={{ borderBlockColor: "gray" }}>
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {type}
-        </Typography>
         <Typography variant="h5" component="div">
           {title}
         </Typography>
