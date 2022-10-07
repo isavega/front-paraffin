@@ -11,7 +11,7 @@ function Checkpoint() {
 	const [completed, setCompleted] = useState("Completar");
 	const {
 		roadmapId,
-		id: checkpointId,
+		learning_unit_id: checkpointId,
 		name: checkpointName,
 		description: checkpointDescription,
 	} = router.query;
