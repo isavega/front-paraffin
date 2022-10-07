@@ -49,6 +49,7 @@ function Roadmap() {
           key={checkpoint.id}
           title={checkpoint.name}
           description={checkpoint.description}
+          buttonText="Ver más"
           buttonAction={() => dataHandler(checkpoint)}
         />
       ))}

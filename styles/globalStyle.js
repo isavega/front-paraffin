@@ -21,6 +21,14 @@ const globalStyle = {
       alignItems: "flex-start",
     },
   },
+  button: {
+    color: color.white,
+    backgroundColor: color.black,
+    alignSelf: "center",
+    width: "50%",
+    margin: "8%",
+    borderRadius: "10px",
+  },
 };
 
 export default globalStyle;

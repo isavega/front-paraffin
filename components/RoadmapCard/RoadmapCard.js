@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import style from "./style";
 
 function RoadmapCard(props) {
-  const { title, description, buttonAction } = props;
+  const { title, description, buttonText, buttonAction } = props;
   return (
     <div style={style.grid.container}>
       <Card style={style.card}>
@@ -22,7 +22,7 @@ function RoadmapCard(props) {
             style={style.button}
             onClick={buttonAction}
           >
-            Learn More
+            {buttonText}
           </Button>
         </CardActions>
       </Card>
