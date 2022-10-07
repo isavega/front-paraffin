@@ -35,21 +35,26 @@ function Home() {
   return (
     <div
       style={{
+        alignItems: "center",
         display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
-        marginTop: "15%",
+        // margin: "10%",
         width: "100%",
       }}
     >
       <h1
         style={{
           fontSize: "60px",
-          color: "black",
+          color: "#005ad6",
         }}
       >
         🔥 Paraffin 🔥
       </h1>
-      <div>
+      <div style={{
+        alignSelf: "flex-end",
+        width: "65%",
+      }}>
         {data?.map((roadmap, index) => (
           <RoadmapCard
             key={index}
