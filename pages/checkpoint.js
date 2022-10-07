@@ -4,6 +4,7 @@ import RoadmapCard from "../components/RoadmapCard/RoadmapCard";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import { postCompletedCheckpoint } from "../api/api";
+import useCurrentUser from "../hooks/useCurrentUser";
 
 function Checkpoint() {
 	const router = useRouter();
@@ -15,6 +16,7 @@ function Checkpoint() {
 		name: checkpointName,
 		description: checkpointDescription,
 	} = router.query;
+	const { id: userId, name: userName, email: userEmail } = useCurrentUser();
 
 	useEffect(() => {
 		const getResources = async () => {
@@ -38,7 +40,7 @@ function Checkpoint() {
 				learning_unit_id: checkpointId,
 				learningUnitId: checkpointId,
 				curriculumId: roadmapId,
-				user_id: 1,
+				user_id: userId,
 			});
 		} else {
 			setCompleted("Completar");
