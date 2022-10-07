@@ -26,7 +26,7 @@ const style = {
   },
   grid: {
     container: {
-      width: "45%",
+      width: "50%",
       alignSelf: "center",
     },
   },
