@@ -20,6 +20,8 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import TextField from "@mui/material/TextField";
 
+import style from "./style";
+
 const ResourceCard = (props) => {
   const { title, rating, dataList, newComment } = props;
   const [openModal, setOpenModal] = useState(false);
@@ -32,18 +34,8 @@ const ResourceCard = (props) => {
   };
 
   return (
-    <div
-      style={{
-        margin: "10%",
-        width: "500px",
-        marginBottom: "30px",
-      }}
-    >
-      <Card
-        style={{
-          alignItems: "center",
-        }}
-      >
+    <div style={style.grid.container}>
+      <Card>
         <CardContent>
           <Typography gutterBottom variant="h5" style={{ textAlign: "center" }}>
             {title}
@@ -125,7 +117,7 @@ const ResourceCard = (props) => {
                 closeAfterTransition
               >
                 <Fade in={openModal}>
-                  <Box sx={style}>
+                  <Box sx={style.resourceCard}>
                     <Typography
                       id="transition-modal-title"
                       variant="h6"
@@ -155,18 +147,6 @@ const ResourceCard = (props) => {
       </Card>
     </div>
   );
-};
-
-const style = {
-  color: "black",
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 500,
-  bgcolor: "background.paper",
-  border: "5px",
-  padding: 4,
 };
 
 export default ResourceCard;
