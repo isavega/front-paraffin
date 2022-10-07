@@ -35,20 +35,27 @@ function Home() {
   return (
     <div
       style={{
-        display: "flex",
+        alignItems: "center",
+        display: "inline-grid",
         justifyContent: "center",
-        marginTop: "15%",
+        margin: "5%",
         width: "100%",
       }}
     >
-      <h1
+      <div
         style={{
-          fontSize: "60px",
-          color: "black",
+          margin: "100px",
         }}
       >
-        🔥 Paraffin 🔥
-      </h1>
+        <h1
+          style={{
+            fontSize: "60px",
+            color: "black",
+          }}
+        >
+          🔥 Paraffin 🔥
+        </h1>
+      </div>
       <div>
         {data?.map((roadmap, index) => (
           <RoadmapCard
