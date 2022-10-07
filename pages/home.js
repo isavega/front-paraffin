@@ -46,21 +46,24 @@ function Home() {
       <h1
         style={{
           fontSize: "60px",
-          color: "#005ad6",
+          color: "black",
         }}
       >
         🔥 Paraffin 🔥
       </h1>
-      <div style={{
-        alignSelf: "flex-end",
-        width: "65%",
-      }}>
+      <div
+        style={{
+          alignSelf: "flex-end",
+          width: "65%",
+        }}
+      >
         {data?.map((roadmap, index) => (
           <RoadmapCard
             key={index}
             title={roadmap.name}
             description={roadmap.description}
             buttonAction={() => dataHandler(roadmap)}
+            buttonText="Ver curso"
           />
         ))}
       </div>
