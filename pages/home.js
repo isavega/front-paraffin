@@ -55,7 +55,7 @@ function Home() {
             key={index}
             title={roadmap.name}
             description={roadmap.description}
-            action={() => dataHandler(roadmap)}
+            buttonAction={() => dataHandler(roadmap)}
           />
         ))}
       </div>
