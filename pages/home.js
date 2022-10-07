@@ -38,7 +38,7 @@ function Home() {
         alignItems: "center",
         display: "inline-grid",
         justifyContent: "center",
-        margin: "5%",
+        margin: "10%",
         width: "100%",
       }}
     >
@@ -50,7 +50,7 @@ function Home() {
         <h1
           style={{
             fontSize: "60px",
-            color: "black",
+            color: "#005ad6",
           }}
         >
           🔥 Paraffin 🔥
