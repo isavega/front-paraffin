@@ -78,7 +78,6 @@ function Checkpoint() {
             key={resource.id}
             title={resource.name}
             description={resource.description}
-            type="Resource" //TODO ??
             action={() => dataHandler(resource)}
           />
         ))}

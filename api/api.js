@@ -6,7 +6,6 @@ export const postResource = async (data) => {
       `api/curriculums/${data.curriculumId}/learning_units/${data.learningUnitId}/resources/create`,
       data
     );
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error(error);

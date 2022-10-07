@@ -48,7 +48,6 @@ function Roadmap() {
           key={checkpoint.id}
           title={checkpoint.name}
           description={checkpoint.description}
-          type="Checkpoint"
           action={() => dataHandler(checkpoint)}
           style={{ margin: "10%" }}
         />

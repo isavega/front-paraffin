@@ -42,7 +42,6 @@ const ResponsiveAppBar = () => {
 
   const submitLogout = async (userId) => {
     const response = await signOut(1); //TODO manage id
-    console.log(response);
     if (response.code === 200) {
       router.push("/login");
       return;
