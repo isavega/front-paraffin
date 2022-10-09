@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 
-function logIn() {
+function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showAlert, setShowAlert] = useState(false);
@@ -71,4 +71,4 @@ function logIn() {
   );
 }
 
-export default logIn;
+export default LogIn;
