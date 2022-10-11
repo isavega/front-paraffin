@@ -14,7 +14,6 @@ import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import StarIcon from "@mui/icons-material/Star";
-
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
@@ -23,10 +22,9 @@ import TextField from "@mui/material/TextField";
 import style from "./style";
 
 const ResourceCard = (props) => {
-  const { title, rating, dataList, newComment } = props;
+  const { title, rating, dataList, newComment, url } = props;
   const [openModal, setOpenModal] = useState(false);
   const [commentValue, setCommentValue] = useState("");
-
   const commentHandler = () => {
     newComment(commentValue);
     setCommentValue("");
@@ -58,8 +56,20 @@ const ResourceCard = (props) => {
               }
             />
           </div>
+
+          <a
+            href={url}
+            style={{ marginLeft: "43%", fontSize: 20, color: "#4200FF" }}
+          >
+            Ver Recurso
+          </a>
+
           <Accordion
-            style={{ backgroundColor: "#424242", borderRadius: "8px" }}
+            style={{
+              backgroundColor: "#424242",
+              borderRadius: "8px",
+              marginTop: "5%",
+            }}
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}

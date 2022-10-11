@@ -8,7 +8,12 @@ import globalStyle from "../styles/globalStyle";
 
 function Resource() {
   const router = useRouter();
-  const { roadmapId, checkpointId, id: resourceId } = router.query;
+  const {
+    roadmapId,
+    checkpointId,
+    id: resourceId,
+    url: resourceUrl,
+  } = router.query;
   const [comments, setComments] = useState([]);
   const { id: userId, name: userName, email: userEmail } = useCurrentUser();
 
@@ -24,7 +29,7 @@ function Resource() {
       }
     };
     getComments();
-  }, []); // TODO ver como hacer el render controladamente
+  }); // TODO ver como hacer el render controladamente, []
 
   const submitHandler = async (input, comment) => {
     const createNewComment = postComment({
@@ -43,6 +48,7 @@ function Resource() {
       <ResourceCard
         title="Django Master"
         rating={3.5}
+        url={resourceUrl}
         dataList={comments}
         newComment={(input) => submitHandler(input)}
       />

@@ -50,6 +50,7 @@ function Checkpoint() {
   };
 
   const dataHandler = (currentResource) => {
+    console.log("ACAAA: ", currentResource);
     router.push(
       {
         pathname: "/resource",
